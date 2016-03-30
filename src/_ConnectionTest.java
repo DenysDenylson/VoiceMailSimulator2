@@ -109,5 +109,65 @@ public class _ConnectionTest {
 		conn.dial("2");
 		verify(phone).speak("Enter new passcode followed by the # key");
 	}
+	
+	@Test
+	public void test3() {
+		MailSystem system = mock(MailSystem.class);
+		Telephone phone = mock(Telephone.class);
+		Connection conn = new Connection(system, phone);
+		Mailbox currentMailbox = mock(Mailbox.class);
+
+		when(system.findMailbox("1")).thenReturn(currentMailbox);
+		when(currentMailbox.checkPasscode("1")).thenReturn(true);
+
+		conn.dial("1");
+		conn.dial("#");
+		conn.dial("1");
+		conn.dial("#");
+		conn.dial("3");
+		verify(phone).speak("Record your greeting, then press the # key");
+	}
+	
+	@Test
+	public void test4() {
+		MailSystem system = mock(MailSystem.class);
+		Telephone phone = mock(Telephone.class);
+		Connection conn = new Connection(system, phone);
+		Mailbox currentMailbox = mock(Mailbox.class);
+
+		when(system.findMailbox("1")).thenReturn(currentMailbox);
+		when(currentMailbox.checkPasscode("1")).thenReturn(true);
+
+		conn.dial("1");
+		conn.dial("#");
+		conn.dial("1");
+		conn.dial("#");
+		conn.dial("1");
+		verify(phone).speak("Enter 1 to listen to the current message\n"
+		         + "Enter 2 to save the current message\n"
+		         + "Enter 3 to delete the current message\n"
+		         + "Enter 4 to return to the main menu");
+	}
+	
+
+	@Test
+	public void test5() {
+		MailSystem system = mock(MailSystem.class);
+		Telephone phone = mock(Telephone.class);
+		Connection conn = new Connection(system, phone);
+		Mailbox currentMailbox = mock(Mailbox.class);
+
+		when(system.findMailbox("1")).thenReturn(currentMailbox);
+		when(currentMailbox.checkPasscode("1")).thenReturn(true);
+
+		conn.dial("1");
+		conn.dial("#");
+		conn.dial("1");
+		conn.dial("#");
+		conn.dial("#");
+		verify(phone).speak("Enter 1 to listen to your messages\n"
+         + "Enter 2 to change your passcode\n"
+         + "Enter 3 to change your greeting");
+	}
 
 }
