@@ -50,7 +50,7 @@ public class _ConnectionTest {
 	}
 
 	@Test
-	public void test1() {//verifica la verificacion del pasccode si es correcto 
+	public void verificationOfThePassCodeIsCorrect() {//verifica la verificacion del pasccode si es correcto 
 		MailSystem system = mock(MailSystem.class);
 		Telephone phone = mock(Telephone.class);
 		Connection conn = new Connection(system, phone);
@@ -72,7 +72,7 @@ public class _ConnectionTest {
 	}
 
 	@Test
-	public void test2() {//verifica la verificacion del pasccode si es incorrecto 
+	public void verificationOfThePassCodeIsIncorrect() {//verifica la verificacion del pasccode si es incorrecto 
 		MailSystem system = mock(MailSystem.class);
 		Telephone phone = mock(Telephone.class);
 		Connection conn = new Connection(system, phone);
@@ -111,7 +111,7 @@ public class _ConnectionTest {
 	}
 	
 	@Test
-	public void test3() {//prueba el cambio de saludo de la opcion 3
+	public void getChangeGreating() {//prueba el cambio de saludo de la opcion 3
 		MailSystem system = mock(MailSystem.class);
 		Telephone phone = mock(Telephone.class);
 		Connection conn = new Connection(system, phone);
@@ -130,7 +130,7 @@ public class _ConnectionTest {
 	}
 	
 	@Test
-	public void test4() {//verifica el menu del messagemenutext al poner la opcion 1
+	public void getMessageMenuText() {//verifica el menu del messagemenutext al poner la opcion 1
 		MailSystem system = mock(MailSystem.class);
 		Telephone phone = mock(Telephone.class);
 		Connection conn = new Connection(system, phone);
@@ -152,7 +152,7 @@ public class _ConnectionTest {
 	
 
 	@Test
-	public void test5() {//verifica cuando ingresa una opcion invalida del mailboxmenu
+	public void wrongOptionInTheMailBoxMenu() {//verifica cuando ingresa una opcion invalida del mailboxmenu
 		MailSystem system = mock(MailSystem.class);
 		Telephone phone = mock(Telephone.class);
 		Connection conn = new Connection(system, phone);
@@ -172,7 +172,7 @@ public class _ConnectionTest {
 	}
 
 	@Test
-	public void test6() {//verifica el messagemenu
+	public void getMessageMenu() {//verifica el messagemenu
 		MailSystem system = mock(MailSystem.class);
 		Telephone phone = mock(Telephone.class);
 		Connection conn = new Connection(system, phone);
@@ -195,7 +195,7 @@ public class _ConnectionTest {
 	}
 	
 	@Test
-	public void test6_1() {//verifica un mensaje vacio
+	public void getMessageNull() {//verifica un mensaje vacio
 		MailSystem system = mock(MailSystem.class);
 		Telephone phone = mock(Telephone.class);
 		Connection conn = new Connection(system, phone);
@@ -225,7 +225,7 @@ public class _ConnectionTest {
 	}
 	
 	@Test
-	public void test6_2() { //verifica un mensaje sin guardar
+	public void getUnsavedMessage() { //verifica un mensaje sin guardar
 		MailSystem system = mock(MailSystem.class);
 		Telephone phone = mock(Telephone.class);
 		Connection conn = new Connection(system, phone);
@@ -258,7 +258,7 @@ public class _ConnectionTest {
 	}
 	
 	@Test
-	public void test7() {//escuchar mensaje actual
+	public void getTheCurrentMessageAndSaveCurrentMessage() {//escuchar mensaje actual y guardarlo
 		MailSystem system = mock(MailSystem.class);
 		Telephone phone = mock(Telephone.class);
 		Connection conn = new Connection(system, phone);
@@ -285,7 +285,7 @@ public class _ConnectionTest {
 	}
 	
 	@Test
-	public void test8() {//escuchar mensaje actual
+	public void getTheCurrentMessageAndDeleteCurrentMessage() {//escuchar mensaje actual y borrarlo
 		MailSystem system = mock(MailSystem.class);
 		Telephone phone = mock(Telephone.class);
 		Connection conn = new Connection(system, phone);
@@ -312,7 +312,7 @@ public class _ConnectionTest {
 	}
 	
 	@Test
-	public void test9() {//escuchar mensaje actual
+	public void returnTheMainMenu() {//retornar al main manu
 		MailSystem system = mock(MailSystem.class);
 		Telephone phone = mock(Telephone.class);
 		Connection conn = new Connection(system, phone);
@@ -331,33 +331,14 @@ public class _ConnectionTest {
 		conn.dial("#");
 		conn.dial("1"); 
 		conn.dial("4");
-//		conn.dial("1");
+		
 		verify(phone, times(2)).speak("Enter 1 to listen to your messages\n"
 		         + "Enter 2 to change your passcode\n"
 		         + "Enter 3 to change your greeting");
+	}	
+	
+	@Test
+	public void test(){
+		
 	}
-	
-//	@Test
-//	public void test10() {//escuchar mensaje actual
-//		MailSystem system = mock(MailSystem.class);
-//		Telephone phone = mock(Telephone.class);
-//		Connection conn = new Connection(system, phone);
-//		Mailbox currentMailbox = mock(Mailbox.class);
-//		
-////		Message message = new Message("Hola mundo");
-////		
-////		currentMailbox.addMessage(message);
-//
-//		when(system.findMailbox("1")).thenReturn(currentMailbox);
-//		when(currentMailbox.checkPasscode("1")).thenReturn(true);
-//
-//		conn.dial("1");
-//		conn.dial("#");
-//		conn.dial("1");
-//		conn.dial("#");
-//		conn.dial("2");
-//		
-//		verify(phone).speak("Enter new passcode followed by the # key");
-//	}
-	
 }
