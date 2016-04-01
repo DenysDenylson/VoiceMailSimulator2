@@ -12,7 +12,7 @@ public class MailSystemTester
       Scanner console = new Scanner(System.in);
       Telephone p = new Telephone(console);
       Connection c = new Connection(system, p);
-      p.run(c);
+      p.run(c); 
    }
 
    private static final int MAILBOX_COUNT = 20;

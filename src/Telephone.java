@@ -46,7 +46,7 @@ public class Telephone
             c.dial(input);
          else
             c.record(input);
-      }
+      } 
    }
 
    private Scanner scanner;
