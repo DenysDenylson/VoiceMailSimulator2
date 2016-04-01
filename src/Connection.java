@@ -46,7 +46,7 @@ public class Connection
       if (state == RECORDING || state == CHANGE_GREETING)
          currentRecording += voice;
    }
-
+ 
    /**
       The user hangs up the phone.
    */
@@ -174,13 +174,13 @@ public class Connection
    private void messageMenu(String key)
    {
       if (key.equals("1"))
-      {
+      { 
          String output = "";
          Message m = currentMailbox.getCurrentMessage();
          if (m == null) output += "No messages." + "\n";
          else output += m.getText() + "\n";
          output += MESSAGE_MENU_TEXT;
-         phone.speak(output);
+         phone.speak(output); 
       }
       else if (key.equals("2"))
       {

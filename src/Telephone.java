@@ -22,7 +22,7 @@ public class Telephone
    public void speak(String output)
    {
       System.out.println(output);
-   }
+   } 
 
    /**
       Loops reading user input and passes the input to the
