@@ -32,7 +32,7 @@ public class MessageQueue
    {
       queue.add(newMessage);
    }
-
+ 
    /**
       Get the total number of messages in the queue.
       @return the total number of messages in the queue

@@ -11,14 +11,14 @@ public class Message
    {
       text = messageText;
    }
-
+ 
    /**
       Get the message text.
       @return message text
    */
    public String getText()
    {
-      return text;
+      return text; 
    }
 
    private String text;

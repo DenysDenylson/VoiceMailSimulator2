@@ -16,7 +16,7 @@ public class Connection
       phone = p;
       resetConnection();
    }
-
+ 
    /**
       Respond to the user's pressing a key on the phone touchpad
       @param key the phone key pressed by the user
@@ -125,7 +125,7 @@ public class Connection
          phone.speak(MAILBOX_MENU_TEXT);
          accumulatedKeys = "";
       }
-      else
+      else 
          accumulatedKeys += key;
    }
 

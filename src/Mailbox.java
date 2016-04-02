@@ -12,10 +12,10 @@ public class Mailbox
    {
       passcode = aPasscode;
       greeting = aGreeting;
-      newMessages = new MessageQueue();
+      newMessages = new MessageQueue(); 
       keptMessages = new MessageQueue();
    }
-
+ 
    /**
       Check if the passcode is correct.
       @param aPasscode a passcode to check
@@ -81,7 +81,7 @@ public class Mailbox
    {
       greeting = newGreeting;
    }
-
+ 
    /**
       Change mailbox's passcode.
       @param newPasscode the new passcode

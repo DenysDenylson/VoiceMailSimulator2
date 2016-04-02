@@ -13,7 +13,7 @@ public class Telephone
    public Telephone(Scanner aScanner)
    {
       scanner = aScanner;
-   }
+   } 
 
    /**
       Speak a message to System.out.

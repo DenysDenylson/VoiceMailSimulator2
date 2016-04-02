@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="Mailbox" project="VoiceMailSimulator" file="/VoiceMailSimulator/src/Mailbox.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="109" y="638"/>    
+    <position height="-1" width="-1" x="486" y="402"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="MailSystem" project="VoiceMailSimulator" 
     file="/VoiceMailSimulator/src/MailSystem.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="107" y="165"/>    
+    <position height="-1" width="-1" x="139" y="631"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="Message" project="VoiceMailSimulator" file="/VoiceMailSimulator/src/Message.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="294" y="1159"/>    
+    <position height="-1" width="-1" x="159" y="770"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="Telephone" project="VoiceMailSimulator" 
     file="/VoiceMailSimulator/src/Telephone.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="421" y="600"/>    
+    <position height="-1" width="-1" x="382" y="176"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="Connection" project="VoiceMailSimulator" 
     file="/VoiceMailSimulator/src/Connection.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="424" y="167"/>    
+    <position height="-1" width="-1" x="151" y="252"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="MessageQueue" project="VoiceMailSimulator" 
     file="/VoiceMailSimulator/src/MessageQueue.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="290" y="948"/>    
+    <position height="-1" width="-1" x="469" y="788"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="MailSystemTester" project="VoiceMailSimulator" 
     file="/VoiceMailSimulator/src/MailSystemTester.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="634" y="-5"/>    
+    <position height="-1" width="-1" x="352" y="27"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -65,23 +65,23 @@
     </display>  
   </class>  
   <association id="8">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="9" name="mailboxes"/>      
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="9" name="queue"/>      
       <multiplicity id="10" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="11">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="12" name="phone"/>      
+      <attribute id="12" name="currentMailbox"/>      
       <multiplicity id="13" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="14">    
-    <bendpoint x="289" y="639"/>    
+    <bendpoint x="625" y="687"/>    
     <end type="SOURCE" refId="1" navigable="false">      
       <attribute id="15" name="keptMessages"/>      
       <multiplicity id="16" minimum="0" maximum="1"/>    
@@ -90,12 +90,11 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="17">    
-    <bendpoint x="110" y="945"/>    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="18" name="newMessages"/>      
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="18" name="phone"/>      
       <multiplicity id="19" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="20">    
@@ -107,20 +106,19 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="23">    
-    <bendpoint x="296" y="453"/>    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="24" name="currentMailbox"/>      
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="24" name="newMessages"/>      
       <multiplicity id="25" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="26">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="27" name="queue"/>      
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="27" name="mailboxes"/>      
       <multiplicity id="28" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

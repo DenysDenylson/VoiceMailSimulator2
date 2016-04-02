@@ -150,7 +150,6 @@ public class _ConnectionTest {
 		         + "Enter 4 to return to the main menu");
 	}
 	
-
 	@Test
 	public void wrongOptionInTheMailBoxMenu() {//verifica cuando ingresa una opcion invalida del mailboxmenu
 		MailSystem system = mock(MailSystem.class);
@@ -338,7 +337,19 @@ public class _ConnectionTest {
 	}	
 	
 	@Test
-	public void test(){
+	public void changePassCode() {
+		MailSystem system = mock(MailSystem.class);
+		Telephone phone = mock(Telephone.class);
+		Connection conn = new Connection(system, phone);
+		Mailbox mailbox = mock(Mailbox.class);
 		
+		when(system.findMailbox("1")).thenReturn(mailbox);
+		when(mailbox.getGreeting()).thenReturn("Hola mailbox");
+
+		conn.dial("1");
+		conn.dial("#");
+
+		verify(phone).speak("Hola mailbox");
+//		assertTrue(conn.isRecording());
 	}
 }
