@@ -35,8 +35,10 @@ public class Telephone
       boolean more = true;
       while (more)
       {
-         String input = scanner.nextLine();
-         if (input == null) return;
+         String input = scanner.nextLine();   
+
+         if (input == null) 
+             return;
          if (input.equalsIgnoreCase("H"))
             c.hangup();
          else if (input.equalsIgnoreCase("Q"))
