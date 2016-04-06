@@ -16,7 +16,7 @@ public class Connection
       phone = p;
       resetConnection();
    }
- 
+
    /**
       Respond to the user's pressing a key on the phone touchpad
       @param key the phone key pressed by the user
@@ -46,7 +46,7 @@ public class Connection
       if (state == RECORDING || state == CHANGE_GREETING)
          currentRecording += voice;
    }
- 
+
    /**
       The user hangs up the phone.
    */
@@ -125,7 +125,7 @@ public class Connection
          phone.speak(MAILBOX_MENU_TEXT);
          accumulatedKeys = "";
       }
-      else 
+      else
          accumulatedKeys += key;
    }
 
@@ -174,15 +174,13 @@ public class Connection
    private void messageMenu(String key)
    {
       if (key.equals("1"))
-      { 
+      {
          String output = "";
          Message m = currentMailbox.getCurrentMessage();
-         if (m == null) 
-        	 output += "No messages." + "\n";
-         else 
-        	 output += m.getText() + "\n";
+         if (m == null) output += "No messages." + "\n";
+         else output += m.getText() + "\n";
          output += MESSAGE_MENU_TEXT;
-         phone.speak(output); 
+         phone.speak(output);
       }
       else if (key.equals("2"))
       {
@@ -202,29 +200,14 @@ public class Connection
    }
    
    
-   public boolean isConnected() {
-		return state == 1;
-
-	}
-
-	public boolean isRecording() {
-		return state == 2;
-	}
-
-	public boolean isInMailBoxMenu() {
-		return state == 3;
-	}
-
-	public boolean isInChangePassword() {
-		return state == 5;
-	}
-
    private MailSystem system;
    private Mailbox currentMailbox;
    private String currentRecording;
    private String accumulatedKeys;
    private Telephone phone;
    private int state;
+   
+   private GUITelephone menu;
 
    private static final int DISCONNECTED = 0;
    private static final int CONNECTED = 1;
@@ -245,6 +228,31 @@ public class Connection
          + "Enter 2 to save the current message\n"
          + "Enter 3 to delete the current message\n"
          + "Enter 4 to return to the main menu";
+   
+
+public boolean isConnected() {
+    return state == CONNECTED;
+ }
+
+ public boolean isRecording() {
+    return state == RECORDING;
+ }
+
+ public boolean isInMailBoxMenu() {
+    return state == MAILBOX_MENU;
+ }
+
+ public boolean isInMessageMenu() {
+    return state == MESSAGE_MENU;
+ }
+
+ public boolean isInChangePassword() {
+    return state == CHANGE_PASSCODE;
+ }
+
+ public boolean isInChangeGreeting() {
+    return state == CHANGE_GREETING;
+ }
 
 }
 

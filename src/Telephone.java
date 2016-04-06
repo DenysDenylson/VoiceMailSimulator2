@@ -13,7 +13,7 @@ public class Telephone
    public Telephone(Scanner aScanner)
    {
       scanner = aScanner;
-   } 
+   }
 
    /**
       Speak a message to System.out.
@@ -22,7 +22,7 @@ public class Telephone
    public void speak(String output)
    {
       System.out.println(output);
-   } 
+   }
 
    /**
       Loops reading user input and passes the input to the
@@ -35,10 +35,8 @@ public class Telephone
       boolean more = true;
       while (more)
       {
-         String input = scanner.nextLine();   
-
-         if (input == null) 
-             return;
+         String input = scanner.nextLine();
+         if (input == null) return;
          if (input.equalsIgnoreCase("H"))
             c.hangup();
          else if (input.equalsIgnoreCase("Q"))
@@ -48,7 +46,7 @@ public class Telephone
             c.dial(input);
          else
             c.record(input);
-      } 
+      }
    }
 
    private Scanner scanner;
