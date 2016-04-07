@@ -1,13 +1,4 @@
-/_ConnectionMailboxMenuTest.class
-/_ConnectionMailboxSystemMenuTest.class
-/_ConnectionMessageMenuTest.class
-/_ConnectionNewTest.class
-/_ConnectionRecordingTest.class
-/_ConnectionTest.class
-/_MailBoxTest.class
-/_MailSystemTest.class
-/_MessageQueueTest.class
-/_MessageTest.class
+/Connection.class
 /GUITelephone$1.class
 /GUITelephone$10.class
 /GUITelephone$11.class
@@ -24,3 +15,10 @@
 /GUITelephone$8.class
 /GUITelephone$9.class
 /GUITelephone.class
+/MailSystem.class
+/MailSystemTester.class
+/Mailbox.class
+/Message.class
+/MessageQueue.class
+/Telephone.class
+/UserInterface.class
