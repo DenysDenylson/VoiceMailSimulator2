@@ -22,3 +22,8 @@
 /MessageQueue.class
 /Telephone.class
 /UserInterface.class
+/_ConnectionMailboxMenuTest.class
+/_ConnectionMailboxSystemMenuTest.class
+/_ConnectionMessageMenuTest.class
+/_ConnectionNewTest.class
+/_ConnectionRecordingTest.class
