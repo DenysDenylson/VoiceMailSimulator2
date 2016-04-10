@@ -77,7 +77,7 @@ public class Connection
       accumulatedKeys = "";
       state = CONNECTED;
       
-	speakToAllUIs(INITIAL_PROMPT);
+	  speakToAllUIs(INITIAL_PROMPT);
 		
    }
 
@@ -99,11 +99,13 @@ private void speakToAllUIs(String output) {
          {
             state = RECORDING;
             
-            phone.speak(currentMailbox.getGreeting());
+//            phone.speak(currentMailbox.getGreeting());
+            speakToAllUIs(currentMailbox.getGreeting());
             
          }
          else
-            phone.speak("Incorrect mailbox number. Try again!");
+        	 speakToAllUIs("Incorrect mailbox number. Try again!");
+//            phone.speak("Incorrect mailbox number. Try again!");
          accumulatedKeys = "";
       }
       else
@@ -121,10 +123,12 @@ private void speakToAllUIs(String output) {
          if (currentMailbox.checkPasscode(accumulatedKeys))
          {
             state = MAILBOX_MENU;
-            phone.speak(MAILBOX_MENU_TEXT);
+//            phone.speak(MAILBOX_MENU_TEXT);
+            speakToAllUIs(MAILBOX_MENU_TEXT);
          }
          else
-            phone.speak("Incorrect passcode. Try again!");
+        	 speakToAllUIs("Incorrect passcode. Try again!");
+//            phone.speak("Incorrect passcode. Try again!");
          accumulatedKeys = "";
       }
       else
@@ -141,7 +145,8 @@ private void speakToAllUIs(String output) {
       {
          currentMailbox.setPasscode(accumulatedKeys);
          state = MAILBOX_MENU;
-         phone.speak(MAILBOX_MENU_TEXT);
+//         phone.speak(MAILBOX_MENU_TEXT);
+         speakToAllUIs(MAILBOX_MENU_TEXT);
          accumulatedKeys = "";
       }
       else
@@ -159,7 +164,8 @@ private void speakToAllUIs(String output) {
          currentMailbox.setGreeting(currentRecording);
          currentRecording = "";
          state = MAILBOX_MENU;
-         phone.speak(MAILBOX_MENU_TEXT);
+//         phone.speak(MAILBOX_MENU_TEXT);
+         speakToAllUIs(MAILBOX_MENU_TEXT);
       }
    }
 
@@ -172,17 +178,20 @@ private void speakToAllUIs(String output) {
       if (key.equals("1"))
       {
          state = MESSAGE_MENU;
-         phone.speak(MESSAGE_MENU_TEXT);
+//         phone.speak(MESSAGE_MENU_TEXT);
+         speakToAllUIs(MESSAGE_MENU_TEXT);
       }
       else if (key.equals("2"))
       {
          state = CHANGE_PASSCODE;
-         phone.speak("Enter new passcode followed by the # key");
+//         phone.speak("Enter new passcode followed by the # key");
+         speakToAllUIs("Enter new passcode followed by the # key");
       }
       else if (key.equals("3"))
       {
          state = CHANGE_GREETING;
-         phone.speak("Record your greeting, then press the # key");
+//         phone.speak("Record your greeting, then press the # key");
+         speakToAllUIs("Record your greeting, then press the # key");
       }
    }
 
@@ -199,22 +208,26 @@ private void speakToAllUIs(String output) {
          if (m == null) output += "No messages." + "\n";
          else output += m.getText() + "\n";
          output += MESSAGE_MENU_TEXT;
-         phone.speak(output);
+//         phone.speak(output);
+         speakToAllUIs(output);
       }
       else if (key.equals("2"))
       {
          currentMailbox.saveCurrentMessage();
-         phone.speak(MESSAGE_MENU_TEXT);
+//         phone.speak(MESSAGE_MENU_TEXT);
+         speakToAllUIs(MESSAGE_MENU_TEXT);
       }
       else if (key.equals("3"))
       {
          currentMailbox.removeCurrentMessage();
-         phone.speak(MESSAGE_MENU_TEXT);
+//         phone.speak(MESSAGE_MENU_TEXT);
+         speakToAllUIs(MESSAGE_MENU_TEXT);
       }
       else if (key.equals("4"))
       {
          state = MAILBOX_MENU;
-         phone.speak(MAILBOX_MENU_TEXT);
+//         phone.speak(MAILBOX_MENU_TEXT);
+         speakToAllUIs(MAILBOX_MENU_TEXT);
       }
    }
    

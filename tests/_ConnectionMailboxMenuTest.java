@@ -21,7 +21,9 @@ public class _ConnectionMailboxMenuTest {
         currentMailbox = mock(Mailbox.class);
         mailSystem = mock(MailSystem.class);
         phone = mock(Telephone.class);
+        
         connection = new Connection(mailSystem, phone);
+        
         when(mailSystem.findMailbox("1")).thenReturn(currentMailbox);
         when(currentMailbox.checkPasscode("1")).thenReturn(true);
         inMailboxLoggedIn();

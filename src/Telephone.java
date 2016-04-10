@@ -19,8 +19,7 @@ public class Telephone implements UserInterface
       Speak a message to System.out.
       @param output the text that will be "spoken"
    */
-   public void speak(String output)
-   {
+   public void speak(String output){
       System.out.println(output);
    }
 
