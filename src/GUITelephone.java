@@ -360,11 +360,8 @@ public class GUITelephone extends javax.swing.JFrame implements UserInterface{
 	 txtDisplay.setText(output);	
 	}
 
-
-
 	@Override
 	public void run(Connection c) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 }

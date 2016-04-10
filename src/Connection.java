@@ -25,7 +25,6 @@ public class Connection
    
    public void addUI(UserInterface ui){
 	   uis.add(ui);
-	   
    }
 
    /**
