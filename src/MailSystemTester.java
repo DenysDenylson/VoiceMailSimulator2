@@ -25,6 +25,8 @@ public class MailSystemTester
       Connection c = new Connection(system, uis);
       
       gui.setVisible(true);
+
+      gui.run(c);
       consola.run(c);
    }
 

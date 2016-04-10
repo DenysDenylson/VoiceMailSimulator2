@@ -289,7 +289,7 @@ public class GUITelephone extends javax.swing.JFrame implements UserInterface{
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         String mensaje = "";
-        mensaje = txtDisplay.getText().toString();
+        mensaje = txtMessage.getText().toString();
 //        txtMessage.setText(mensaje);
 //        txtDisplay.setText("");
         
@@ -306,8 +306,8 @@ public class GUITelephone extends javax.swing.JFrame implements UserInterface{
 	        else
 	            c.record(mensaje);
 		}
-      txtMessage.setText(mensaje);
-      txtDisplay.setText("");
+//      txtMessage.setText(mensaje);
+      txtMessage.setText("");
         
 //        run(c);
         
