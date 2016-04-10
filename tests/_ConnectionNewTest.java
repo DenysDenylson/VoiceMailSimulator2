@@ -10,6 +10,9 @@ import org.junit.Test;
 
 import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class _ConnectionNewTest {
 
     Mailbox currentMailbox;
@@ -30,7 +33,11 @@ public class _ConnectionNewTest {
         currentMailbox = mock(Mailbox.class);
         mailSystem = mock(MailSystem.class);
         phone = mock(Telephone.class);
-        connection = new Connection(mailSystem, phone);
+        
+        List<UserInterface> lista = new ArrayList<UserInterface>();
+        lista.add(phone);
+        
+        connection = new Connection(mailSystem, lista);
     }
 
     @Test

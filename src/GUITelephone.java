@@ -13,6 +13,8 @@ public class GUITelephone extends javax.swing.JFrame implements UserInterface{
     /**
      * Creates new form Menu2
      */
+	public Connection c;
+	
     public GUITelephone() {
         initComponents();
     }
@@ -287,9 +289,28 @@ public class GUITelephone extends javax.swing.JFrame implements UserInterface{
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         String mensaje = "";
-        mensaje = txtDisplay.getText().toString();
-        txtMessage.setText(mensaje);
-        txtDisplay.setText("");
+        mensaje = txtMessage.getText().toString();
+//        txtMessage.setText(mensaje);
+//        txtDisplay.setText("");
+        
+//        String comando = "";
+//		comando = txtDisplay.getText().toString();
+		
+		if(mensaje != ""){
+			if (mensaje.equalsIgnoreCase("H"))
+	            c.hangup();
+			else if (mensaje.equalsIgnoreCase("Q"))
+	            setVisible(false);
+	        else if (mensaje.length() == 1 && "1234567890#".indexOf(mensaje) >= 0)
+	            c.dial(mensaje);
+	        else
+	            c.record(mensaje);
+		}
+//      txtMessage.setText(mensaje);
+      txtMessage.setText("");
+        
+//        run(c);
+        
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnoActionPerformed
@@ -361,7 +382,10 @@ public class GUITelephone extends javax.swing.JFrame implements UserInterface{
 	}
 
 	@Override
-	public void run(Connection c) {
+	public void run(Connection ca) {
 		// TODO Auto-generated method stub	
+		this.c = ca;			
 	}
+	
+	
 }

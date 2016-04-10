@@ -5,6 +5,9 @@ import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Deleguard on 4/1/16.
  */
@@ -21,7 +24,12 @@ public class _ConnectionMailboxMenuTest {
         currentMailbox = mock(Mailbox.class);
         mailSystem = mock(MailSystem.class);
         phone = mock(Telephone.class);
-        connection = new Connection(mailSystem, phone);
+        
+        List<UserInterface> lista = new ArrayList<UserInterface>();
+        lista.add(phone);
+        
+        connection = new Connection(mailSystem, lista);
+        
         when(mailSystem.findMailbox("1")).thenReturn(currentMailbox);
         when(currentMailbox.checkPasscode("1")).thenReturn(true);
         inMailboxLoggedIn();

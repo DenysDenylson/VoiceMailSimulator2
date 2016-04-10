@@ -18,12 +18,15 @@ public class MailSystemTester
       UserInterface consola = new Telephone(console);
       GUITelephone gui = new GUITelephone();
       
-      gui.setVisible(true);
+      
       uis.add(gui);
       uis.add(consola);
       
       Connection c = new Connection(system, uis);
       
+      gui.setVisible(true);
+
+      gui.run(c);
       consola.run(c);
    }
 
