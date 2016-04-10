@@ -4,6 +4,9 @@ import org.junit.Before;
 
 import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class _ConnectionMessageMenuTest {
     Mailbox currentMailbox;
@@ -24,7 +27,11 @@ public class _ConnectionMessageMenuTest {
         currentMailbox = mock(Mailbox.class);
         mailSystem = mock(MailSystem.class);
         phone = mock(Telephone.class);
-        connection = new Connection(mailSystem, phone);
+        
+        List<UserInterface> lista = new ArrayList<UserInterface>();
+        lista.add(phone);
+        
+        connection = new Connection(mailSystem, lista);
 
         when(mailSystem.findMailbox("1")).thenReturn(currentMailbox);
         when(currentMailbox.checkPasscode("1")).thenReturn(true);

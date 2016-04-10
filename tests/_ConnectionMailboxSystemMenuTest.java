@@ -4,6 +4,9 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,7 +27,11 @@ public class _ConnectionMailboxSystemMenuTest {
         currentMailbox = mock(Mailbox.class);
         mailSystem = mock(MailSystem.class);
         phone = mock(Telephone.class);
-        connection = new Connection(mailSystem, phone);
+        
+        List<UserInterface> lista = new ArrayList<UserInterface>();
+        lista.add(phone);
+        
+        connection = new Connection(mailSystem, lista);
     }
 
 	
