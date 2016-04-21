@@ -62,25 +62,23 @@ public class Connection
  */
    public void dial(String key)
    {
+	   ConnectionState currentState = null;
+	   
       if (state == CONNECTED) {
-		ConnectedState currentState = new ConnectedState();
-		currentState.dial(key, this);
+		currentState = new ConnectedState();
 	} else if (state == RECORDING) {
-		RecordingState currentState = new RecordingState();
-		currentState.dial(key, this);
+		currentState = new RecordingState();
 	} else if (state == CHANGE_PASSCODE) {
-		ChangePasscodeState currentState = new ChangePasscodeState();
-		currentState.dial(key, this);
+		currentState = new ChangePasscodeState();
 	} else if (state == CHANGE_GREETING) {
-		ChangeGreetingState currentState = new ChangeGreetingState();
-		currentState.dial(key, this);
+		currentState = new ChangeGreetingState();
 	} else if (state == MAILBOX_MENU) {
-		MailboxMenuState currentState = new MailboxMenuState();
-		currentState.dial(key, this);
+		currentState = new MailboxMenuState();
 	} else if (state == MESSAGE_MENU) {
-		MessageMenuState currentState = new MessageMenuState();
-		currentState.dial(key, this);
+		currentState = new MessageMenuState();
+		
 	}
+      currentState.dial(key, this);
    }
 
    /**
