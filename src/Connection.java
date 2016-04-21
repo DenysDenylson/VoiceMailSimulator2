@@ -6,7 +6,7 @@ import java.util.List;
    class is to keep track of the state of a connection, since
    the phone itself is just a source of individual key presses.
 */
-public class Connection
+public class Connection 
 {
 	
 	  
@@ -57,24 +57,30 @@ public class Connection
 	   uis.add(ui);
    }
 
-   /**
-      Respond to the user's pressing a key on the phone touchpad
-      @param key the phone key pressed by the user
-   */
+   /* (non-Javadoc)
+ * @see ConnectionState#dial(java.lang.String)
+ */
    public void dial(String key)
    {
-      if (state == CONNECTED)
-         new ConnectedState().connect(key, this);
-      else if (state == RECORDING)
-         new RecordingState().login(key, this);
-      else if (state == CHANGE_PASSCODE)
-         new ChangePasscodeState().changePasscode(key, this);
-      else if (state == CHANGE_GREETING)
-         new ChangeGreetingState().changeGreeting(key, this);
-      else if (state == MAILBOX_MENU)
-         new MailboxMenuState().mailboxMenu(key, this);
-      else if (state == MESSAGE_MENU)
-         new MessageMenuState().messageMenu(key, this);
+      if (state == CONNECTED) {
+		ConnectedState currentState = new ConnectedState();
+		currentState.dial(key, this);
+	} else if (state == RECORDING) {
+		RecordingState currentState = new RecordingState();
+		currentState.dial(key, this);
+	} else if (state == CHANGE_PASSCODE) {
+		ChangePasscodeState currentState = new ChangePasscodeState();
+		currentState.dial(key, this);
+	} else if (state == CHANGE_GREETING) {
+		ChangeGreetingState currentState = new ChangeGreetingState();
+		currentState.dial(key, this);
+	} else if (state == MAILBOX_MENU) {
+		MailboxMenuState currentState = new MailboxMenuState();
+		currentState.dial(key, this);
+	} else if (state == MESSAGE_MENU) {
+		MessageMenuState currentState = new MessageMenuState();
+		currentState.dial(key, this);
+	}
    }
 
    /**
