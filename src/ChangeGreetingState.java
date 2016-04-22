@@ -12,7 +12,7 @@ public class ChangeGreetingState implements ConnectionState {
 	}
 
 	public String getState() {
-		return "change greeting";
+		return "change reeting";
 	}
 
 }

@@ -64,12 +64,12 @@ public class Connection {
 	}
 
 	public void record(String voice) {
-		if (state == RECORDING || state == CHANGE_GREETING)
+		if (currentState.getState() == "recording" || /*state == CHANGE_GREETING*/currentState.getState() == "change greeting")
 			currentRecording += voice;
 	}
 
 	public void hangup() {
-		if (state == RECORDING)
+		if (currentState.getState() == "recording")
 			currentMailbox.addMessage(new Message(currentRecording));
 		resetConnection();
 	}
