@@ -79,7 +79,7 @@ public class Mailbox
    */
    public void setGreeting(String newGreeting)
    {
-      greeting = newGreeting;
+      this.greeting = newGreeting;
    }
 
    /**

@@ -2,297 +2,117 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-   Connects a phone to the mail system. The purpose of this
-   class is to keep track of the state of a connection, since
-   the phone itself is just a source of individual key presses.
-*/
-public class Connection
-{
-	
-	  
-	   private MailSystem system;
-	   private Mailbox currentMailbox;
-	   private String currentRecording;
-	   private String accumulatedKeys;
-	   private UserInterface phone;
-	   private UserInterface phone2;   
-	   private int state;
+ * Connects a phone to the mail system. The purpose of this class is to keep
+ * track of the state of a connection, since the phone itself is just a source
+ * of individual key presses.
+ */
+public class Connection {
 
-	   private static final int DISCONNECTED = 0;
-	   private static final int CONNECTED = 1;
-	   private static final int RECORDING = 2;
-	   private static final int MAILBOX_MENU = 3;
-	   private static final int MESSAGE_MENU = 4;
-	   private static final int CHANGE_PASSCODE = 5;
-	   private static final int CHANGE_GREETING = 6;
+	MailSystem system;
+	Mailbox currentMailbox;
+	String currentRecording;
+	String accumulatedKeys;
+	private UserInterface phone;
+	private UserInterface phone2;
+	int state;
 
-	   private static final String INITIAL_PROMPT = 
-	         "Enter mailbox number followed by #";      
-	   private static final String MAILBOX_MENU_TEXT = 
-	         "Enter 1 to listen to your messages\n"
-	         + "Enter 2 to change your passcode\n"
-	         + "Enter 3 to change your greeting";
-	   private static final String MESSAGE_MENU_TEXT = 
-	         "Enter 1 to listen to the current message\n"
-	         + "Enter 2 to save the current message\n"
-	         + "Enter 3 to delete the current message\n"
-	         + "Enter 4 to return to the main menu";
-	   
-   /**
-      Construct a Connection object.
-      @param s a MailSystem object
-      @param p a Telephone object
-   */
+	private static final int DISCONNECTED = 0;
+	private static final int CONNECTED = 1;
+	static final int RECORDING = 2;
+	static final int MAILBOX_MENU = 3;
+	static final int MESSAGE_MENU = 4;
+	static final int CHANGE_PASSCODE = 5;
+	static final int CHANGE_GREETING = 6;
+
+	private static final String INITIAL_PROMPT = "Enter mailbox number followed by #";
+	static final String MAILBOX_MENU_TEXT = "Enter 1 to listen to your messages\n" + "Enter 2 to change your passcode\n"
+			+ "Enter 3 to change your greeting";
+	static final String MESSAGE_MENU_TEXT = "Enter 1 to listen to the current message\n"
+			+ "Enter 2 to save the current message\n" + "Enter 3 to delete the current message\n"
+			+ "Enter 4 to return to the main menu";
+
 	List<UserInterface> uis;
-	
-	
-   public Connection(MailSystem s, List uis)
-   {
-	  this.uis = uis;
-      system = s;
-      resetConnection();
-   }
-   
-   public void addUI(UserInterface ui){
-	   uis.add(ui);
-   }
+	ConnectionState currentState = null;
 
-   /**
-      Respond to the user's pressing a key on the phone touchpad
-      @param key the phone key pressed by the user
-   */
-   public void dial(String key)
-   {
-      if (state == CONNECTED)
-         connect(key);
-      else if (state == RECORDING)
-         login(key);
-      else if (state == CHANGE_PASSCODE)
-         changePasscode(key);
-      else if (state == CHANGE_GREETING)
-         changeGreeting(key);
-      else if (state == MAILBOX_MENU)
-         mailboxMenu(key);
-      else if (state == MESSAGE_MENU)
-         messageMenu(key);
-   }
+	public Connection(MailSystem s, List uis) {
+		this.uis = uis;
+		system = s;
+		resetConnection();
+	}
 
-   /**
-      Record voice.
-      @param voice voice spoken by the user
-   */
-   public void record(String voice)
-   {
-      if (state == RECORDING || state == CHANGE_GREETING)
-         currentRecording += voice;
-   }
+	public void addUI(UserInterface ui) {
+		uis.add(ui);
+	}
 
-   /**
-      The user hangs up the phone.
-   */
-   public void hangup()
-   {
-      if (state == RECORDING)
-         currentMailbox.addMessage(new Message(currentRecording));
-      resetConnection();
-   }
-
-   /**
-      Reset the connection to the initial state and prompt
-      for mailbox number
-   */
-   private void resetConnection()
-   {
-      currentRecording = "";
-      accumulatedKeys = "";
-      state = CONNECTED;
-      
-	  speakToAllUIs(INITIAL_PROMPT);
+	public void dial(String key) {
 		
-   }
 
-	private void speakToAllUIs(String output) {
-		for(UserInterface ui : uis) 
+		if (state == CONNECTED) {
+			currentState = new ConnectedState();
+		} else if (state == RECORDING) {
+			currentState = new RecordingState();
+		} else if (state == CHANGE_PASSCODE) {
+			currentState = new ChangePasscodeState();
+		} else if (state == CHANGE_GREETING) {
+			currentState = new ChangeGreetingState();
+		} else if (state == MAILBOX_MENU) {
+			currentState = new MailboxMenuState();
+		} else if (state == MESSAGE_MENU) {
+			currentState = new MessageMenuState();
+		}
+		currentState.dial(key, this);
+	}
+
+	public void record(String voice) {
+		if (currentState.getState() == "recording" || /*state == CHANGE_GREETING*/currentState.getState() == "change greeting")
+			currentRecording += voice;
+	}
+
+	public void hangup() {
+		if (currentState.getState() == "recording")
+			currentMailbox.addMessage(new Message(currentRecording));
+		resetConnection();
+	}
+
+	/**
+	 * Reset the connection to the initial state and prompt for mailbox number
+	 */
+	private void resetConnection() {
+		currentRecording = "";
+		accumulatedKeys = "";
+		state = CONNECTED;
+
+		speakToAllUIs(INITIAL_PROMPT);
+
+	}
+
+	void speakToAllUIs(String output) {
+		for (UserInterface ui : uis)
 			ui.speak(output);
 	}
 
-   /**
-      Try to connect the user with the specified mailbox.
-      @param key the phone key pressed by the user
-   */
-   private void connect(String key)
-   {
-      if (key.equals("#"))
-      {
-         currentMailbox = system.findMailbox(accumulatedKeys);
-         if (currentMailbox != null)
-         {
-            state = RECORDING;
-            speakToAllUIs(currentMailbox.getGreeting());
-            
-         }
-         else
-        	 speakToAllUIs("Incorrect mailbox number. Try again!");
-         accumulatedKeys = "";
-      }
-      else
-         accumulatedKeys += key;
-   }
+	public boolean isConnected() {
+		return state == CONNECTED;
+	}
 
-   /**
-      Try to log in the user.
-      @param key the phone key pressed by the user
-   */
-   private void login(String key)
-   {
-      if (key.equals("#"))
-      {
-         if (currentMailbox.checkPasscode(accumulatedKeys))
-         {
-            state = MAILBOX_MENU;
-//            phone.speak(MAILBOX_MENU_TEXT);
-            speakToAllUIs(MAILBOX_MENU_TEXT);
-         }
-         else
-        	 speakToAllUIs("Incorrect passcode. Try again!");
-//            phone.speak("Incorrect passcode. Try again!");
-         accumulatedKeys = "";
-      }
-      else
-         accumulatedKeys += key;
-   }
+	public boolean isRecording() {
+		return state == RECORDING;
+	}
 
-   /**
-      Change passcode.
-      @param key the phone key pressed by the user
-   */
-   private void changePasscode(String key)
-   {
-      if (key.equals("#"))
-      {
-         currentMailbox.setPasscode(accumulatedKeys);
-         state = MAILBOX_MENU;
-//         phone.speak(MAILBOX_MENU_TEXT);
-         speakToAllUIs(MAILBOX_MENU_TEXT);
-         accumulatedKeys = "";
-      }
-      else
-         accumulatedKeys += key;
-   }
+	public boolean isInMailBoxMenu() {
+		return state == MAILBOX_MENU;
+	}
 
-   /**
-      Change greeting.
-      @param key the phone key pressed by the user
-   */
-   private void changeGreeting(String key)
-   {
-      if (key.equals("#"))
-      {
-         currentMailbox.setGreeting(currentRecording);
-         currentRecording = "";
-         state = MAILBOX_MENU;
-//         phone.speak(MAILBOX_MENU_TEXT);
-         speakToAllUIs(MAILBOX_MENU_TEXT);
-      }
-   }
+	public boolean isInMessageMenu() {
+		return state == MESSAGE_MENU;
+	}
 
-   /**
-      Respond to the user's selection from mailbox menu.
-      @param key the phone key pressed by the user
-   */
-   private void mailboxMenu(String key)
-   {
-      if (key.equals("1"))
-      {
-         state = MESSAGE_MENU;
-//         phone.speak(MESSAGE_MENU_TEXT);
-         speakToAllUIs(MESSAGE_MENU_TEXT);
-      }
-      else if (key.equals("2"))
-      {
-         state = CHANGE_PASSCODE;
-//         phone.speak("Enter new passcode followed by the # key");
-         speakToAllUIs("Enter new passcode followed by the # key");
-      }
-      else if (key.equals("3"))
-      {
-         state = CHANGE_GREETING;
-//         phone.speak("Record your greeting, then press the # key");
-         speakToAllUIs("Record your greeting, then press the # key");
-      }
-   }
+	public boolean isInChangePassword() {
+		return state == CHANGE_PASSCODE;
+	}
 
-   /**
-      Respond to the user's selection from message menu.
-      @param key the phone key pressed by the user
-   */
-   private void messageMenu(String key)
-   {
-      if (key.equals("1"))
-      {
-         String output = "";
-         Message m = currentMailbox.getCurrentMessage();
-         if (m == null) output += "No messages." + "\n";
-         else output += m.getText() + "\n";
-         output += MESSAGE_MENU_TEXT;
-//         phone.speak(output);
-         speakToAllUIs(output);
-      }
-      else if (key.equals("2"))
-      {
-         currentMailbox.saveCurrentMessage();
-//         phone.speak(MESSAGE_MENU_TEXT);
-         speakToAllUIs(MESSAGE_MENU_TEXT);
-      }
-      else if (key.equals("3"))
-      {
-         currentMailbox.removeCurrentMessage();
-//         phone.speak(MESSAGE_MENU_TEXT);
-         speakToAllUIs(MESSAGE_MENU_TEXT);
-      }
-      else if (key.equals("4"))
-      {
-         state = MAILBOX_MENU;
-//         phone.speak(MAILBOX_MENU_TEXT);
-         speakToAllUIs(MAILBOX_MENU_TEXT);
-      }
-   }
-   
- 
-
-public boolean isConnected() {
-    return state == CONNECTED;
- }
-
- public boolean isRecording() {
-    return state == RECORDING;
- }
-
- public boolean isInMailBoxMenu() {
-    return state == MAILBOX_MENU;
- }
-
- public boolean isInMessageMenu() {
-    return state == MESSAGE_MENU;
- }
-
- public boolean isInChangePassword() {
-    return state == CHANGE_PASSCODE;
- }
-
- public boolean isInChangeGreeting() {
-    return state == CHANGE_GREETING;
- }
+	public boolean isInChangeGreeting() {
+		return state == CHANGE_GREETING;
+	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
