@@ -1,6 +1,7 @@
 
 public class MailboxMenuState implements ConnectionState {
 	
+        @Override
 	public void dial(String key, Connection connection) {
 		if (key.equals("1")) {
 			connection.state = Connection.MESSAGE_MENU;
@@ -14,6 +15,7 @@ public class MailboxMenuState implements ConnectionState {
 		}
 	}
 	
+        @Override
 	public String getState(){
 		return "mailbox menu";
 	}

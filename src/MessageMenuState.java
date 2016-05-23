@@ -1,6 +1,7 @@
 
 public class MessageMenuState implements ConnectionState {
 
+        @Override
 	public void dial(String key, Connection connection) {
 		if (key.equals("1")) {
 			String output = "";
@@ -23,6 +24,7 @@ public class MessageMenuState implements ConnectionState {
 		}
 	}
 	
+        @Override
 	public String getState(){
 		return "message menu";
 	}
