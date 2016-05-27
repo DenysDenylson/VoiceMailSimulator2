@@ -1,7 +1,7 @@
 
 public class RecordingState implements ConnectionState {
 
-        @Override
+    @Override
 	public void dial(String key, Connection connection) {
 		if (key.equals("#")) {
 			if (connection.currentMailbox.checkPasscode(connection.accumulatedKeys)) {
@@ -14,7 +14,7 @@ public class RecordingState implements ConnectionState {
 			connection.accumulatedKeys += key;
 	}
 	
-        @Override
+    @Override
 	public String getState(){
 		return "recording";
 	}
