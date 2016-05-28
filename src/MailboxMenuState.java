@@ -12,6 +12,9 @@ public class MailboxMenuState implements ConnectionState {
 		} else if (key.equals("3")) {
 			connection.state = Connection.CHANGE_GREETING;
 			connection.speakToAllUIs("Record your greeting, then press the # key");
+		} else if (key.equals("4")) {
+			connection.state = Connection.CONTACT_MENU;
+			connection.speakToAllUIs(Connection.CONTACT_MENU_TEXT);
 		}
 	}
 	

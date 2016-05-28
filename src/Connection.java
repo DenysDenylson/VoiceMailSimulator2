@@ -23,13 +23,27 @@ public class Connection {
 	static final int MESSAGE_MENU = 4;
 	static final int CHANGE_PASSCODE = 5;
 	static final int CHANGE_GREETING = 6;
-
+	static final int CONTACT_MENU = 7;
+	
 	private static final String INITIAL_PROMPT = "Enter mailbox number followed by #";
-	static final String MAILBOX_MENU_TEXT = "Enter 1 to listen to your messages\n" + "Enter 2 to change your passcode\n"
-			+ "Enter 3 to change your greeting";
-	static final String MESSAGE_MENU_TEXT = "Enter 1 to listen to the current message\n"
-			+ "Enter 2 to save the current message\n" + "Enter 3 to delete the current message\n"
-			+ "Enter 4 to return to the main menu";
+	
+	static final String MAILBOX_MENU_TEXT = 
+			"Enter 1 to listen to your messages\n" 
+			+ "Enter 2 to change your passcode\n"
+			+ "Enter 3 to change your greeting\n"
+	        + "Enter 4 to view your contacts";
+	
+	static final String MESSAGE_MENU_TEXT = 
+			"Enter 1 to listen to the current message\n"
+	         + "Enter 2 to save the current message\n"
+	         + "Enter 3 to delete the current message\n"
+	         + "Enter 4 to return to the main menu";
+	
+	static final String CONTACT_MENU_TEXT = 
+	           "Enter 1 to view list contacts\n"
+	         + "Enter 2 to save the current contact\n"
+	         + "Enter 3 to delete the current contact\n"
+	         + "Enter 4 to return to the main menu";
 
 	List<UserInterface> uis;
 	ConnectionState currentState = null;
@@ -58,6 +72,8 @@ public class Connection {
 		} else if (state == MAILBOX_MENU) {
 			currentState = new MailboxMenuState();
 		} else if (state == MESSAGE_MENU) {
+			currentState = new MessageMenuState();
+		} else if (state == CONTACT_MENU) {
 			currentState = new MessageMenuState();
 		}
 		currentState.dial(key, this);
