@@ -18,9 +18,11 @@ public class _ConnectionMailboxSystemMenuTest {
     Telephone phone;
     Connection connection;
 
-    private static String MAILBOX_MENU_TEXT = "Enter 1 to listen to your messages\n"
-                    + "Enter 2 to change your passcode\n"
-                    + "Enter 3 to change your greeting";
+    private static String MAILBOX_MENU_TEXT = 
+    		"Enter 1 to listen to your messages\n" 
+			+ "Enter 2 to change your passcode\n"
+			+ "Enter 3 to change your greeting\n"
+	        + "Enter 4 to view your contacts";
    
     @Before
     public void setup() {

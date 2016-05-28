@@ -1,3 +1,5 @@
 *.class
 *.class
 bin/Connection.class
+*.class
+*.class

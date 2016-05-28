@@ -74,9 +74,11 @@ public class _ConnectionTest {
 	    
 	    Connection conn = new Connection(system, lista);
 	    Mailbox currentMailbox = mock(Mailbox.class);
-	    String mailboxText = "Enter 1 to listen to your messages\n"
-	            + "Enter 2 to change your passcode\n"
-	            + "Enter 3 to change your greeting";
+	    String mailboxText = 
+	    		"Enter 1 to listen to your messages\n" 
+				+ "Enter 2 to change your passcode\n"
+				+ "Enter 3 to change your greeting\n"
+		        + "Enter 4 to view your contacts";
 	    
 	    when(system.findMailbox("1")).thenReturn(currentMailbox);
 	    when(currentMailbox.checkPasscode("1")).thenReturn(true);

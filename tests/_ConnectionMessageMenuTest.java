@@ -14,9 +14,12 @@ public class _ConnectionMessageMenuTest {
     Telephone phone;
     Connection connection;
 
-    private static String MAILBOX_MENU_TEXT = "Enter 1 to listen to your messages\n"
-            + "Enter 2 to change your passcode\n"
-            + "Enter 3 to change your greeting";
+    private static String MAILBOX_MENU_TEXT = 
+    		"Enter 1 to listen to your messages\n" 
+			+ "Enter 2 to change your passcode\n"
+			+ "Enter 3 to change your greeting\n"
+	        + "Enter 4 to view your contacts";
+    
     private static String MESSAGE_MENU_TEXT = "Enter 1 to listen to the current message\n"
             + "Enter 2 to save the current message\n"
             + "Enter 3 to delete the current message\n"
