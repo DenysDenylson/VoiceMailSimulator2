@@ -11,28 +11,22 @@ public class MailSystemTester
 
    private static final int MAILBOX_COUNT = 20;
    
-   public static void main(String[] args)
-   {
+   public static void main(String[] args){
       MailSystem system = new MailSystem(MAILBOX_COUNT);
       Scanner console = new Scanner(System.in);
       
       List<UserInterface> uis = new ArrayList<UserInterface>();
       
       UserInterface consola = new Telephone(console);
-//      GUITelephone gui = new GUITelephone();
       TelephoneGUI fone = new TelephoneGUI();
       
-      
-//      uis.add(gui);
       uis.add(consola);
       uis.add(fone);
       
       Connection c = new Connection(system, uis);
       
-//      gui.setVisible(true);
       fone.setVisible(true);
       
-//      gui.run(c);
       fone.run(c);
       consola.run(c);
    }
