@@ -3,13 +3,17 @@
 */
 public class Mailbox
 {
+	private MessageQueue newMessages;
+	private MessageQueue keptMessages;
+	private String greeting;
+	private String passcode;
+	
    /**
       Creates Mailbox object.
       @param aPasscode passcode number
       @param aGreeting greeting string
    */
-   public Mailbox(String aPasscode, String aGreeting)
-   {
+   public Mailbox(String aPasscode, String aGreeting){
       passcode = aPasscode;
       greeting = aGreeting;
       newMessages = new MessageQueue();
@@ -21,8 +25,7 @@ public class Mailbox
       @param aPasscode a passcode to check
       @return true if the supplied passcode matches the mailbox passcode
    */
-   public boolean checkPasscode(String aPasscode)
-   {
+   public boolean checkPasscode(String aPasscode){
       return aPasscode.equals(passcode);
    }
 
@@ -30,8 +33,7 @@ public class Mailbox
       Add a message to the mailbox.
       @param aMessage the message to be added
    */
-   public void addMessage(Message aMessage)
-   {
+   public void addMessage(Message aMessage){
       newMessages.add(aMessage);
    }
 
@@ -39,8 +41,7 @@ public class Mailbox
       Get the current message.
       @return the current message
    */
-   public Message getCurrentMessage()
-   {
+   public Message getCurrentMessage(){
       if (newMessages.size() > 0)
          return newMessages.peek();
       else if (keptMessages.size() > 0)
@@ -53,8 +54,7 @@ public class Mailbox
       Remove the current message from the mailbox.
       @return the message that has just been removed
    */
-   public Message removeCurrentMessage()
-   {
+   public Message removeCurrentMessage(){
       if (newMessages.size() > 0)
          return newMessages.remove();
       else if (keptMessages.size() > 0)
@@ -66,8 +66,7 @@ public class Mailbox
    /**
       Save the current message
    */
-   public void saveCurrentMessage()
-   {
+   public void saveCurrentMessage(){
       Message m = removeCurrentMessage();
       if (m != null)
          keptMessages.add(m);
@@ -77,8 +76,7 @@ public class Mailbox
       Change mailbox's greeting.
       @param newGreeting the new greeting string
    */
-   public void setGreeting(String newGreeting)
-   {
+   public void setGreeting(String newGreeting){
       this.greeting = newGreeting;
    }
 
@@ -86,8 +84,7 @@ public class Mailbox
       Change mailbox's passcode.
       @param newPasscode the new passcode
    */
-   public void setPasscode(String newPasscode)
-   {
+   public void setPasscode(String newPasscode){
       passcode = newPasscode;
    }
 
@@ -95,13 +92,7 @@ public class Mailbox
       Get the mailbox's greeting.
       @return the greeting
    */
-   public String getGreeting()
-   {
+   public String getGreeting(){
       return greeting;
    }
-
-   private MessageQueue newMessages;
-   private MessageQueue keptMessages;
-   private String greeting;
-   private String passcode;
 }

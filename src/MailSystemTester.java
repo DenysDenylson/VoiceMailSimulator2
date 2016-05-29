@@ -8,6 +8,9 @@ import java.util.Scanner;
 */
 public class MailSystemTester
 {
+
+   private static final int MAILBOX_COUNT = 20;
+   
    public static void main(String[] args)
    {
       MailSystem system = new MailSystem(MAILBOX_COUNT);
@@ -16,23 +19,21 @@ public class MailSystemTester
       List<UserInterface> uis = new ArrayList<UserInterface>();
       
       UserInterface consola = new Telephone(console);
-      GUITelephone gui = new GUITelephone();
+//      GUITelephone gui = new GUITelephone();
       TelephoneGUI fone = new TelephoneGUI();
       
       
-      uis.add(gui);
+//      uis.add(gui);
       uis.add(consola);
       uis.add(fone);
       
       Connection c = new Connection(system, uis);
       
-      gui.setVisible(true);
+//      gui.setVisible(true);
       fone.setVisible(true);
       
-      gui.run(c);
+//      gui.run(c);
       fone.run(c);
       consola.run(c);
    }
-
-   private static final int MAILBOX_COUNT = 20;
 }

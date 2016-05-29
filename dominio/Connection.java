@@ -12,8 +12,9 @@ public class Connection {
 	Mailbox currentMailbox;
 	String currentRecording;
 	String accumulatedKeys;
-	private UserInterface phone;
-	private UserInterface phone2;
+	
+	String contact="denys 12312";
+
 	int state;
 
 	private static final int DISCONNECTED = 0;
@@ -24,6 +25,8 @@ public class Connection {
 	static final int CHANGE_PASSCODE = 5;
 	static final int CHANGE_GREETING = 6;
 	static final int CONTACT_MENU = 7;
+	
+	
 	
 	private static final String INITIAL_PROMPT = "Enter mailbox number followed by #";
 	
@@ -41,8 +44,8 @@ public class Connection {
 	
 	static final String CONTACT_MENU_TEXT = 
 	           "Enter 1 to view list contacts\n"
-	         + "Enter 2 to save the current contact\n"
-	         + "Enter 3 to delete the current contact\n"
+	         + "Enter 2 to create the contact\n"
+	         + "Enter 3 to delete the contact\n"
 	         + "Enter 4 to return to the main menu";
 
 	List<UserInterface> uis;
@@ -59,8 +62,6 @@ public class Connection {
 	}
 
 	public void dial(String key) {
-		
-
 		if (state == CONNECTED) {
 			currentState = new ConnectedState();
 		} else if (state == RECORDING) {
@@ -99,7 +100,6 @@ public class Connection {
 		state = CONNECTED;
 
 		speakToAllUIs(INITIAL_PROMPT);
-
 	}
 
 	void speakToAllUIs(String output) {
