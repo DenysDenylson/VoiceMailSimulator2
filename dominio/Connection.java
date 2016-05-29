@@ -13,7 +13,7 @@ public class Connection {
 	String currentRecording;
 	String accumulatedKeys;
 	
-	String contact="denys 12312";
+	static final String contact="denys 12312";
 
 	int state;
 
@@ -75,7 +75,7 @@ public class Connection {
 		} else if (state == MESSAGE_MENU) {
 			currentState = new MessageMenuState();
 		} else if (state == CONTACT_MENU) {
-			currentState = new MessageMenuState();
+			currentState = new ContactMenuState();
 		}
 		currentState.dial(key, this);
 	}
