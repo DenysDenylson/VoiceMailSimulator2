@@ -3,6 +3,8 @@
 */
 public class Message
 {
+   private String text;
+   
    /**
       Construct a Message object.
       @param messageText the message text
@@ -21,5 +23,5 @@ public class Message
       return text;
    }
 
-   private String text;
+
 }
