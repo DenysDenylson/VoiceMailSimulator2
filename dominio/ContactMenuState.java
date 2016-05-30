@@ -18,8 +18,8 @@ public class ContactMenuState implements ConnectionState {
 			c.speakToAllUIs("Insertar contacto #");
 //			c.setContact(c.currentRecording);
 //			c.currentRecording = "";
-//			c.state = Connection.CONTACT_MENU;
-			c.speakToAllUIs(c.currentRecording+"auiq");
+			c.currentState = new CreatedContactState();
+			c.speakToAllUIs(Connection.CONTACT_MENU_TEXT);
 		} else if (key.equals("3")) {
 			System.out.println("Denus");
 		} else if (key.equals("4")) {

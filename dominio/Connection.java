@@ -13,7 +13,7 @@ public class Connection {
 	String currentRecording;
 	String accumulatedKeys;
 	
-	public List<String> contactos;
+	public List<String> contactos = new ArrayList<String>();
 
 	private static final String INITIAL_PROMPT = "Enter mailbox number followed by #";
 	
@@ -58,7 +58,7 @@ public class Connection {
 	}
 
 	public void record(String voice) {
-		if (currentState.getState()== 2 || currentState.getState() == 6)
+		if (currentState.getState()== 2 || currentState.getState() == 6 || currentState.getState() == 8)
 			currentRecording += voice;
 	}
 
