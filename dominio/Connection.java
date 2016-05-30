@@ -35,13 +35,12 @@ public class Connection {
 	         + "Enter 3 to delete the contact\n"
 	         + "Enter 4 to return to the main menu";
 
-	List<UserInterface> uis;
+	List<UserInterface> uis = new ArrayList<UserInterface>();
 	ConnectionState currentState = null;
 
-	public Connection(MailSystem s, List uis) {
-		this.uis = uis;
+	public Connection(MailSystem s) {
 		system = s;
-		resetConnection();
+		
 		
 		contactos = new ArrayList<String>();
 		contactos.add("denys 111");
@@ -51,6 +50,7 @@ public class Connection {
 
 	public void addUI(UserInterface ui) {
 		uis.add(ui);
+		resetConnection();
 	}
 
 	public void dial(String key) {

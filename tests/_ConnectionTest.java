@@ -14,10 +14,9 @@ public class _ConnectionTest {
 		MailSystem system = mock(MailSystem.class);
 	    Telephone phone = mock(Telephone.class);
 	    
-	    List<UserInterface> lista = new ArrayList<UserInterface>();
-        lista.add(phone);
-	    
-	    Connection conn = new Connection(system, lista);
+	    Connection conn = new Connection(system);
+        conn.addUI(phone);
+        
 	    
 	    verify(phone).speak("Enter mailbox number followed by #");
 	    assertTrue(conn.isConnected());
@@ -29,10 +28,9 @@ public class _ConnectionTest {
 		MailSystem system = mock(MailSystem.class);
 	    Telephone phone = mock(Telephone.class);
 	    
-	    List<UserInterface> lista = new ArrayList<UserInterface>();
-        lista.add(phone);
-	    
-	    Connection conn = new Connection(system, lista);
+	    Connection conn = new Connection(system);
+        conn.addUI(phone);
+        
 	    Mailbox mailbox = mock(Mailbox.class);
 	    
 	    when(system.findMailbox("1")).thenReturn(mailbox);
@@ -51,10 +49,8 @@ public class _ConnectionTest {
 		MailSystem system = mock(MailSystem.class);
 	    Telephone phone = mock(Telephone.class);
 	    
-	    List<UserInterface> lista = new ArrayList<UserInterface>();
-        lista.add(phone);
-	    
-	    Connection conn = new Connection(system, lista);
+	    Connection conn = new Connection(system);
+        conn.addUI(phone);
 	    
 	    when(system.findMailbox("10")).thenReturn(null);
 	   
@@ -69,10 +65,9 @@ public class _ConnectionTest {
 		MailSystem system = mock(MailSystem.class);
 	    Telephone phone = mock(Telephone.class);
 	    
-	    List<UserInterface> lista = new ArrayList<UserInterface>();
-        lista.add(phone);
-	    
-	    Connection conn = new Connection(system, lista);
+	    Connection conn = new Connection(system);
+        conn.addUI(phone);
+        
 	    Mailbox currentMailbox = mock(Mailbox.class);
 	    String mailboxText = 
 	    		"Enter 1 to listen to your messages\n" 
@@ -98,10 +93,9 @@ public class _ConnectionTest {
 		MailSystem system = mock(MailSystem.class);
 	    Telephone phone = mock(Telephone.class);
 	    
-	    List<UserInterface> lista = new ArrayList<UserInterface>();
-        lista.add(phone);
-	    
-	    Connection conn = new Connection(system, lista);
+	    Connection conn = new Connection(system);
+        conn.addUI(phone);
+        
 	    Mailbox currentMailbox = mock(Mailbox.class);
 	    String mailboxText = "Incorrect passcode. Try again!";
 	    
@@ -123,10 +117,9 @@ public class _ConnectionTest {
 		MailSystem system = mock(MailSystem.class);
 	    Telephone phone = mock(Telephone.class);
 	    
-	    List<UserInterface> lista = new ArrayList<UserInterface>();
-        lista.add(phone);
-	    
-	    Connection conn = new Connection(system, lista);
+	    Connection conn = new Connection(system);
+        conn.addUI(phone);
+        
 	    Mailbox currentMailbox = mock(Mailbox.class);
 	    
 	    when(system.findMailbox("1")).thenReturn(currentMailbox);

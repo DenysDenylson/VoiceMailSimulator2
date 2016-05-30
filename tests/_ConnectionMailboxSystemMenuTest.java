@@ -30,10 +30,9 @@ public class _ConnectionMailboxSystemMenuTest {
         mailSystem = mock(MailSystem.class);
         phone = mock(Telephone.class);
         
-        List<UserInterface> lista = new ArrayList<UserInterface>();
-        lista.add(phone);
+        connection = new Connection(mailSystem);
+        connection.addUI(phone);
         
-        connection = new Connection(mailSystem, lista);
     }
 
 	
