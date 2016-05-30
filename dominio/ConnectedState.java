@@ -6,7 +6,7 @@ public class ConnectedState implements ConnectionState {
         if (key.equals("#")) {
             connection.currentMailbox = connection.system.findMailbox(connection.accumulatedKeys);
             if (connection.currentMailbox != null) {
-                connection.state = Connection.RECORDING;
+                connection.currentState= new RecordingState();
                 connection.speakToAllUIs(connection.currentMailbox.getGreeting());
 
             } else {
@@ -19,8 +19,8 @@ public class ConnectedState implements ConnectionState {
     }
 
     @Override
-    public String getState() {
-        return "connected";
+    public int getState() {
+        return 1;
     }
 
 }

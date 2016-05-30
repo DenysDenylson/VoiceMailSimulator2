@@ -23,24 +23,15 @@ public class ContactMenuState implements ConnectionState {
 		} else if (key.equals("3")) {
 			System.out.println("Denus");
 		} else if (key.equals("4")) {
-			c.state = Connection.MAILBOX_MENU;
+			c.currentState = new MailboxMenuState();
 			c.speakToAllUIs(Connection.MAILBOX_MENU_TEXT);
 		}
 		
 	}
 
 	@Override
-	public String getState() {
+	public int getState() {
 		// TODO Auto-generated method stub
-		return null;
+		return 7;
 	}
-	
-//	public String getContacts(){
-//		String listaDeContactos = "";
-//		
-//		for (String contacto : contactos)
-//			listaDeContactos += contacto + "\n";
-//		return listaDeContactos;
-//	}
-
 }

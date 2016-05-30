@@ -19,13 +19,13 @@ public class MessageMenuState implements ConnectionState {
 			connection.currentMailbox.removeCurrentMessage();
 			connection.speakToAllUIs(Connection.MESSAGE_MENU_TEXT);
 		} else if (key.equals("4")) {
-			connection.state = Connection.MAILBOX_MENU;
+			connection.currentState = new MailboxMenuState();
 			connection.speakToAllUIs(Connection.MAILBOX_MENU_TEXT);
 		}
 	}
 	
         @Override
-	public String getState(){
-		return "message menu";
+	public int getState(){
+		return 4;
 	}
 }

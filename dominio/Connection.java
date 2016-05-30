@@ -15,20 +15,6 @@ public class Connection {
 	
 	public List<String> contactos;
 
-	int state;
-
-	private static final int DISCONNECTED = 0;
-	private static final int CONNECTED = 1;
-	static final int RECORDING = 2;
-	static final int MAILBOX_MENU = 3;
-	static final int MESSAGE_MENU = 4;
-	static final int CHANGE_PASSCODE = 5;
-	static final int CHANGE_GREETING = 6;
-	static final int CONTACT_MENU = 7;
-	static final int CREATED_CONTACT = 8;
-	
-	
-	
 	private static final String INITIAL_PROMPT = "Enter mailbox number followed by #";
 	
 	static final String MAILBOX_MENU_TEXT = 
@@ -68,33 +54,16 @@ public class Connection {
 	}
 
 	public void dial(String key) {
-		if (state == CONNECTED) {
-			currentState = new ConnectedState();
-		} else if (state == RECORDING) {
-			currentState = new RecordingState();
-		} else if (state == CHANGE_PASSCODE) {
-			currentState = new ChangePasscodeState();
-		} else if (state == CHANGE_GREETING) {
-			currentState = new ChangeGreetingState();
-		} else if (state == MAILBOX_MENU) {
-			currentState = new MailboxMenuState();
-		} else if (state == MESSAGE_MENU) {
-			currentState = new MessageMenuState();
-		} else if (state == CONTACT_MENU) {
-			currentState = new ContactMenuState();
-		} else if (state == CREATED_CONTACT) {
-			currentState = new CreatedContactState();
-		}
 		currentState.dial(key, this);
 	}
 
 	public void record(String voice) {
-		if (state == RECORDING || state == CHANGE_GREETING)
+		if (currentState.getState()== 2 || currentState.getState() == 6)
 			currentRecording += voice;
 	}
 
 	public void hangup() {
-		if (state == RECORDING)
+		if (currentState.getState() == 2)
 			currentMailbox.addMessage(new Message(currentRecording));
 		resetConnection();
 	}
@@ -105,7 +74,7 @@ public class Connection {
 	private void resetConnection() {
 		currentRecording = "";
 		accumulatedKeys = "";
-		state = CONNECTED;
+		currentState = new ConnectedState();
 
 		speakToAllUIs(INITIAL_PROMPT);
 	}
@@ -116,27 +85,27 @@ public class Connection {
 	}
 
 	public boolean isConnected() {
-		return state == CONNECTED;
+		return currentState.getState() == 1;
 	}
 
 	public boolean isRecording() {
-		return state == RECORDING;
+		return currentState.getState() == 2;
 	}
 
 	public boolean isInMailBoxMenu() {
-		return state == MAILBOX_MENU;
+		return currentState.getState() == 3;
 	}
 
 	public boolean isInMessageMenu() {
-		return state == MESSAGE_MENU;
+		return currentState.getState() == 4;
 	}
 
 	public boolean isInChangePassword() {
-		return state == CHANGE_PASSCODE;
+		return currentState.getState() == 5;
 	}
 
 	public boolean isInChangeGreeting() {
-		return state == CHANGE_GREETING;
+		return currentState.getState() == 6;
 	}
 	
 	public String getContacts(){
