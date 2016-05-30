@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.sql.SQLException;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
    This program tests the mail system. A single phone
    communicates with the program through System.in/System.out.
@@ -25,5 +28,10 @@ public class MailSystemTester
       
       fone.run(c);
       consola.run(c);
+//	   int id = 1;
+//	   String nombre = "denys-111";
+//	   Conexion con = new Conexion();
+//	   String sql = "INSERT INTO schema_prueba.\"Contactos\"(id, nombres) VALUES (1,'dddd')";
+//	   con.Insertar(sql);
    }
 }
