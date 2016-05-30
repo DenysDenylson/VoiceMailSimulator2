@@ -1,3 +1,6 @@
+
+import Messages.Message;
+
 /**
    A mailbox contains messages that can be listed, kept or discarded.
 */

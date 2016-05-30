@@ -1,4 +1,3 @@
-
 public class CreatedContactState implements ConnectionState {
 
 	@Override

@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import Messages.Message;
+
 /**
  * Connects a phone to the mail system. The purpose of this class is to keep
  * track of the state of a connection, since the phone itself is just a source
@@ -44,8 +46,8 @@ public class Connection {
 		
 		contactos = new ArrayList<String>();
 		contactos.add("denys 111");
-		contactos.add("denys 222");
-		contactos.add("denys 333");
+		contactos.add("lesly 222");
+		contactos.add("oscar 333");
 	}
 
 	public void addUI(UserInterface ui) {

@@ -1,3 +1,4 @@
+import Messages.Message;
 
 public class MessageMenuState implements ConnectionState {
 
