@@ -29,18 +29,6 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					TelephoneGUI frame = new TelephoneGUI();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the frame.
@@ -61,9 +49,9 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 		JButton botonUno = new JButton("1");
 		botonUno.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String mensaje = txtMensaje.getText();
-				mensaje += "1";
-				txtMensaje.setText(mensaje);
+//				String mensaje = txtMensaje.getText();
+//				mensaje += "1";
+//				txtMensaje.setText(mensaje);
 				
 //				String mensaje = "";
 //		        mensaje = txtMensaje.getText().toString();
@@ -74,93 +62,102 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 //					else if (mensaje.equalsIgnoreCase("Q"))
 //			            setVisible(false);
 //			        else if (mensaje.length() == 1 && "1234567890#".indexOf(mensaje) >= 0)
-//			            c.dial(mensaje);
+			            c.dial("1");
 //			        else
 //			            c.record(mensaje);
 //				}
-//				
-//				txtMensaje.setText("");
+				
+				txtMensaje.setText("");
 			}
 		});
 		
 		JButton botonDos = new JButton("2");
 		botonDos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String mensaje = txtMensaje.getText();
-				mensaje += "2";
-				txtMensaje.setText(mensaje);
+//				String mensaje = txtMensaje.getText();
+//				mensaje += "2";
+//				txtMensaje.setText(mensaje);
+				c.dial("2");
 			}
 		});
 		
 		JButton botonTres = new JButton("3");
 		botonTres.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String mensaje = txtMensaje.getText();
-				mensaje += "3";
-				txtMensaje.setText(mensaje);
+//				String mensaje = txtMensaje.getText();
+//				mensaje += "3";
+//				txtMensaje.setText(mensaje);
+				c.dial("3");
 			}
 		});
 		
 		JButton botonCuatro = new JButton("4");
 		botonCuatro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String mensaje = txtMensaje.getText();
-				mensaje += "4";
-				txtMensaje.setText(mensaje);
+//				String mensaje = txtMensaje.getText();
+//				mensaje += "4";
+//				txtMensaje.setText(mensaje);
+				c.dial("4");
 			}
 		});
 		
 		JButton botonCinco = new JButton("5");
 		botonCinco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String mensaje = txtMensaje.getText();
-				mensaje += "5";
-				txtMensaje.setText(mensaje);
+//				String mensaje = txtMensaje.getText();
+//				mensaje += "5";
+//				txtMensaje.setText(mensaje);
+				c.dial("5");
 			}
 		});
 		
 		JButton botonSeis = new JButton("6");
 		botonSeis.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String mensaje = txtMensaje.getText();
-				mensaje += "6";
-				txtMensaje.setText(mensaje);
+//				String mensaje = txtMensaje.getText();
+//				mensaje += "6";
+//				txtMensaje.setText(mensaje);
+				c.dial("6");
 			}
 		});
 		
 		JButton botonSiete = new JButton("7");
 		botonSiete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String mensaje = txtMensaje.getText();
-				mensaje += "7";
-				txtMensaje.setText(mensaje);
+//				String mensaje = txtMensaje.getText();
+//				mensaje += "7";
+//				txtMensaje.setText(mensaje);
+				c.dial("7");
 			}
 		});
 		
 		JButton botonOcho = new JButton("8");
 		botonOcho.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String mensaje = txtMensaje.getText();
-				mensaje += "8";
-				txtMensaje.setText(mensaje);
+//				String mensaje = txtMensaje.getText();
+//				mensaje += "8";
+//				txtMensaje.setText(mensaje);
+				c.dial("8");
 			}
 		});
 		
 		JButton botonNueve = new JButton("9");
 		botonNueve.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String mensaje = txtMensaje.getText();
-				mensaje += "9";
-				txtMensaje.setText(mensaje);
+//				String mensaje = txtMensaje.getText();
+//				mensaje += "9";
+//				txtMensaje.setText(mensaje);
+				c.dial("9");
 			}
 		});
 		
 		JButton botonCero = new JButton("0");
 		botonCero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String mensaje = txtMensaje.getText();
-				mensaje += "0";
-				txtMensaje.setText(mensaje);
+//				String mensaje = txtMensaje.getText();
+//				mensaje += "0";
+//				txtMensaje.setText(mensaje);
+				c.dial("0");
 			}
 		});
 		
@@ -188,21 +185,22 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 		JButton botonNumeral = new JButton("#");
 		botonNumeral.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String mensaje = "";
-		        mensaje = txtMensaje.getText().toString();
-
-				if(mensaje != ""){
-					if (mensaje.equalsIgnoreCase("H"))
-			            c.hangup();
-					else if (mensaje.equalsIgnoreCase("Q"))
-			            setVisible(false);
-			        else if (mensaje.length() == 1 && "1234567890#".indexOf(mensaje) >= 0)
-			            c.dial(mensaje);
-			        else
-			            c.record(mensaje);
-				}
-				
-				txtMensaje.setText("");
+//				String mensaje = "";
+//		        mensaje = txtMensaje.getText().toString();
+//
+//				if(mensaje != ""){
+//					if (mensaje.equalsIgnoreCase("H"))
+//			            c.hangup();
+//					else if (mensaje.equalsIgnoreCase("Q"))
+//			            setVisible(false);
+//			        else if (mensaje.length() == 1 && "1234567890#".indexOf(mensaje) >= 0)
+//			            c.dial(mensaje);
+//			        else
+//			            c.record(mensaje);
+//				}
+//				
+//				txtMensaje.setText("");
+				c.dial("#");
 			}
 		});
 		
