@@ -11,15 +11,14 @@ public class CreatedContactState implements ConnectionState {
 //			connection.state = Connection.CONTACT_MENU;
 //			connection.speakToAllUIs(Connection.CONTACT_MENU_TEXT);
 		}else{
-			connection.state = Connection.CONTACT_MENU;
+			connection.currentState = new ContactMenuState();
 			connection.speakToAllUIs(Connection.CONTACT_MENU_TEXT);
 		}
 	}
 
 	@Override
-	public String getState() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getState() {
+		return 8;
 	}
 
 }

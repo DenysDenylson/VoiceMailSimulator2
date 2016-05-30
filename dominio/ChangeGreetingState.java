@@ -6,15 +6,14 @@ public class ChangeGreetingState implements ConnectionState {
 		if (key.equals("#")) {
 			connection.currentMailbox.setGreeting(connection.currentRecording);
 			connection.currentRecording = "";
-			connection.state = Connection.MAILBOX_MENU;
-			// phone.speak(MAILBOX_MENU_TEXT);
+			connection.currentState = new MailboxMenuState();
 			connection.speakToAllUIs(Connection.MAILBOX_MENU_TEXT);
 		}
 	}
 
         @Override
-	public String getState() {
-		return "change reeting";
+	public int getState() {
+		return 6;
 	}
 
 }
