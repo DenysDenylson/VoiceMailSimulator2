@@ -288,6 +288,7 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 
 	@Override
 	public void run(Connection ca) {
+		setVisible(true);
 		this.c = ca;
 	}
 }

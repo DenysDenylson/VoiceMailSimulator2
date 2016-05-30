@@ -15,17 +15,13 @@ public class MailSystemTester
       MailSystem system = new MailSystem(MAILBOX_COUNT);
       Scanner console = new Scanner(System.in);
       
-      List<UserInterface> uis = new ArrayList<UserInterface>();
-      
       UserInterface consola = new Telephone(console);
-      TelephoneGUI fone = new TelephoneGUI();
+      UserInterface fone = new TelephoneGUI();
       
-      uis.add(consola);
-      uis.add(fone);
+      Connection c = new Connection(system);
       
-      Connection c = new Connection(system, uis);
-      
-      fone.setVisible(true);
+      c.addUI(consola);
+      c.addUI(fone);
       
       fone.run(c);
       consola.run(c);
