@@ -13,7 +13,8 @@ public class Connection {
 	String currentRecording;
 	String accumulatedKeys;
 	
-	static final String contact="denys 12312";
+//	static final String contact="denys 12312";
+	static final List<String> contactos = new ArrayList<String>();
 
 	int state;
 
@@ -25,6 +26,7 @@ public class Connection {
 	static final int CHANGE_PASSCODE = 5;
 	static final int CHANGE_GREETING = 6;
 	static final int CONTACT_MENU = 7;
+	static final int CREATED_CONTACT = 8;
 	
 	
 	
@@ -55,6 +57,10 @@ public class Connection {
 		this.uis = uis;
 		system = s;
 		resetConnection();
+		
+		contactos.add("denys 111");
+		contactos.add("denys 222");
+		contactos.add("denys 333");
 	}
 
 	public void addUI(UserInterface ui) {
@@ -76,6 +82,8 @@ public class Connection {
 			currentState = new MessageMenuState();
 		} else if (state == CONTACT_MENU) {
 			currentState = new ContactMenuState();
+		} else if (state == CREATED_CONTACT) {
+			currentState = new CreatedContactState();
 		}
 		currentState.dial(key, this);
 	}
@@ -130,5 +138,19 @@ public class Connection {
 	public boolean isInChangeGreeting() {
 		return state == CHANGE_GREETING;
 	}
+	
+	public String getContacts(){
+		String listaDeContactos = "";
+		
+		for (String contacto : contactos)
+			listaDeContactos += contacto + "\n";
+		return listaDeContactos;
+	}
+	
+	public boolean setContact(String contact){
+		Connection.contactos.add(contact);
+		return true;
+	}
+
 
 }
