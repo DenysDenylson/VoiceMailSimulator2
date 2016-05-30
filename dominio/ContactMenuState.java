@@ -3,13 +3,8 @@ import java.util.List;
 
 public class ContactMenuState implements ConnectionState {
 	
-//	public List<String> contactos;
 	
 	public ContactMenuState() {
-//		contactos = new ArrayList<String>();
-//		contactos.add("denys 111");
-//		contactos.add("denys 222");
-//		contactos.add("denys 333");
 	}
 
 		@Override
@@ -20,9 +15,11 @@ public class ContactMenuState implements ConnectionState {
 			output += Connection.CONTACT_MENU_TEXT;
 			c.speakToAllUIs(output);
 		} else if (key.equals("2")) {
-			c.state = Connection.CREATED_CONTACT;
 			c.speakToAllUIs("Insertar contacto #");
-			
+//			c.setContact(c.currentRecording);
+//			c.currentRecording = "";
+//			c.state = Connection.CONTACT_MENU;
+			c.speakToAllUIs(c.currentRecording+"auiq");
 		} else if (key.equals("3")) {
 			System.out.println("Denus");
 		} else if (key.equals("4")) {

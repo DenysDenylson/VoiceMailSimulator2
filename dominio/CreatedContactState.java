@@ -3,17 +3,17 @@ public class CreatedContactState implements ConnectionState {
 
 	@Override
 	public void dial(String key, Connection connection) {
-		if (key.equals("#")) {
-//			System.out.println(connection.accumulatedKeys);
-			if (connection.setContact(connection.accumulatedKeys)) {
-				connection.state = Connection.CONTACT_MENU;
-				connection.speakToAllUIs(Connection.CONTACT_MENU_TEXT);
-			} else
-				connection.speakToAllUIs("Fail. Try again!");
-			connection.accumulatedKeys = "";
-		} else
-			connection.accumulatedKeys += key;
-
+		if (key.equals("#") != true) {
+//			connection.speakToAllUIs(key+"ppppppppppppppppp");
+//			connection.setContact(key+"aaaa");
+			connection.contactos.add(key);
+//			connection.accumulatedKeys = "";
+//			connection.state = Connection.CONTACT_MENU;
+//			connection.speakToAllUIs(Connection.CONTACT_MENU_TEXT);
+		}else{
+			connection.state = Connection.CONTACT_MENU;
+			connection.speakToAllUIs(Connection.CONTACT_MENU_TEXT);
+		}
 	}
 
 	@Override

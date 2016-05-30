@@ -13,8 +13,7 @@ public class Connection {
 	String currentRecording;
 	String accumulatedKeys;
 	
-//	static final String contact="denys 12312";
-	static final List<String> contactos = new ArrayList<String>();
+	public List<String> contactos;
 
 	int state;
 
@@ -58,6 +57,7 @@ public class Connection {
 		system = s;
 		resetConnection();
 		
+		contactos = new ArrayList<String>();
 		contactos.add("denys 111");
 		contactos.add("denys 222");
 		contactos.add("denys 333");
@@ -148,7 +148,7 @@ public class Connection {
 	}
 	
 	public boolean setContact(String contact){
-		Connection.contactos.add(contact);
+		contactos.add(contact);
 		return true;
 	}
 
