@@ -1,3 +1,4 @@
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 //import org.postgresql.Driver;
@@ -12,12 +13,12 @@ public class Conexion {
     public Conexion() {
         try {
             try {
-                Class.forName("org.postgresql.Driver");
+                Class.forName("org.sqlite.JDBC");
                 System.out.println("Se cargo el driver");
             } catch (ClassNotFoundException e) {
                 System.out.println("Error al cargar el Driver");
             }
-            con = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/db_VoiceMail", "user", "123");
+            con = DriverManager.getConnection("jdbc:sqlite:db_voiceMail.db");
         } catch (SQLException ex) {
             System.out.println("No se pudo conectar a la base de datos"+ex.toString());
         }        

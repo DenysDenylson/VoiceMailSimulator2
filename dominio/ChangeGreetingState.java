@@ -1,4 +1,3 @@
-
 public class ChangeGreetingState implements ConnectionState {
 
         @Override

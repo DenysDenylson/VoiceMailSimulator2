@@ -49,24 +49,7 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 		JButton botonUno = new JButton("1");
 		botonUno.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				String mensaje = txtMensaje.getText();
-//				mensaje += "1";
-//				txtMensaje.setText(mensaje);
-				
-//				String mensaje = "";
-//		        mensaje = txtMensaje.getText().toString();
-//
-//				if(mensaje != ""){
-//					if (mensaje.equalsIgnoreCase("H"))
-//			            c.hangup();
-//					else if (mensaje.equalsIgnoreCase("Q"))
-//			            setVisible(false);
-//			        else if (mensaje.length() == 1 && "1234567890#".indexOf(mensaje) >= 0)
-			            c.dial("1");
-//			        else
-//			            c.record(mensaje);
-//				}
-				
+				c.dial("1");
 				txtMensaje.setText("");
 			}
 		});
@@ -74,9 +57,7 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 		JButton botonDos = new JButton("2");
 		botonDos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				String mensaje = txtMensaje.getText();
-//				mensaje += "2";
-//				txtMensaje.setText(mensaje);
+
 				c.dial("2");
 			}
 		});
@@ -84,9 +65,7 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 		JButton botonTres = new JButton("3");
 		botonTres.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				String mensaje = txtMensaje.getText();
-//				mensaje += "3";
-//				txtMensaje.setText(mensaje);
+
 				c.dial("3");
 			}
 		});
@@ -94,9 +73,7 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 		JButton botonCuatro = new JButton("4");
 		botonCuatro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				String mensaje = txtMensaje.getText();
-//				mensaje += "4";
-//				txtMensaje.setText(mensaje);
+
 				c.dial("4");
 			}
 		});
@@ -104,9 +81,7 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 		JButton botonCinco = new JButton("5");
 		botonCinco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				String mensaje = txtMensaje.getText();
-//				mensaje += "5";
-//				txtMensaje.setText(mensaje);
+
 				c.dial("5");
 			}
 		});
@@ -114,9 +89,7 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 		JButton botonSeis = new JButton("6");
 		botonSeis.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				String mensaje = txtMensaje.getText();
-//				mensaje += "6";
-//				txtMensaje.setText(mensaje);
+
 				c.dial("6");
 			}
 		});
@@ -124,9 +97,7 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 		JButton botonSiete = new JButton("7");
 		botonSiete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				String mensaje = txtMensaje.getText();
-//				mensaje += "7";
-//				txtMensaje.setText(mensaje);
+
 				c.dial("7");
 			}
 		});
@@ -134,9 +105,7 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 		JButton botonOcho = new JButton("8");
 		botonOcho.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				String mensaje = txtMensaje.getText();
-//				mensaje += "8";
-//				txtMensaje.setText(mensaje);
+
 				c.dial("8");
 			}
 		});
@@ -144,9 +113,7 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 		JButton botonNueve = new JButton("9");
 		botonNueve.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				String mensaje = txtMensaje.getText();
-//				mensaje += "9";
-//				txtMensaje.setText(mensaje);
+
 				c.dial("9");
 			}
 		});
@@ -154,9 +121,7 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 		JButton botonCero = new JButton("0");
 		botonCero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				String mensaje = txtMensaje.getText();
-//				mensaje += "0";
-//				txtMensaje.setText(mensaje);
+
 				c.dial("0");
 			}
 		});
@@ -164,6 +129,20 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 		JButton botonH = new JButton("H");
 		botonH.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				 c.hangup();
+			}
+		});
+		
+		JButton botonNumeral = new JButton("#");
+		botonNumeral.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				c.dial("#");
+			}
+		});
+		
+		JButton botonAceptar = new JButton("Aceptar");
+		botonAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				String mensaje = "";
 		        mensaje = txtMensaje.getText().toString();
 
@@ -179,28 +158,6 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 				}
 				
 				txtMensaje.setText("");
-			}
-		});
-		
-		JButton botonNumeral = new JButton("#");
-		botonNumeral.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-//				String mensaje = "";
-//		        mensaje = txtMensaje.getText().toString();
-//
-//				if(mensaje != ""){
-//					if (mensaje.equalsIgnoreCase("H"))
-//			            c.hangup();
-//					else if (mensaje.equalsIgnoreCase("Q"))
-//			            setVisible(false);
-//			        else if (mensaje.length() == 1 && "1234567890#".indexOf(mensaje) >= 0)
-//			            c.dial(mensaje);
-//			        else
-//			            c.record(mensaje);
-//				}
-//				
-//				txtMensaje.setText("");
-				c.dial("#");
 			}
 		});
 		
@@ -241,7 +198,9 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 									.addGap(6)
 									.addComponent(botonCero)
 									.addGap(6)
-									.addComponent(botonNumeral)))
+									.addComponent(botonNumeral)
+									.addGap(6)
+									.addComponent(botonAceptar))) 
 							.addGap(136))
 						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 							.addComponent(txtMensaje, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
@@ -271,7 +230,8 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(botonH)
 						.addComponent(botonCero)
-						.addComponent(botonNumeral))
+						.addComponent(botonNumeral)
+						.addComponent(botonAceptar))
 					.addGap(23)
 					.addComponent(txtMensaje, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(98))

@@ -15,6 +15,7 @@ public class MailSystemTester
    private static final int MAILBOX_COUNT = 20;
    
    public static void main(String[] args){
+	   
       MailSystem system = new MailSystem(MAILBOX_COUNT);
       Scanner console = new Scanner(System.in);
       
@@ -28,10 +29,11 @@ public class MailSystemTester
       
       fone.run(c);
       consola.run(c);
+	   
 //	   int id = 1;
 //	   String nombre = "denys-111";
 //	   Conexion con = new Conexion();
-//	   String sql = "INSERT INTO schema_prueba.\"Contactos\"(id, nombres) VALUES (1,'dddd')";
+//	   String sql = "INSERT INTO Contactos (id,nombres) " + "VALUES (1, 'Paul')";
 //	   con.Insertar(sql);
    }
 }

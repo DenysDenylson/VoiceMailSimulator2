@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import Messages.Message;
+
 /**
    A first-in, first-out collection of messages. This
    implementation is not very efficient. We will consider

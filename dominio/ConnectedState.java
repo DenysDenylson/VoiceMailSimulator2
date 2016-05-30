@@ -1,4 +1,3 @@
-
 public class ConnectedState implements ConnectionState {
 
     @Override

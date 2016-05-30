@@ -1,4 +1,3 @@
-
 public class RecordingState implements ConnectionState {
 
     @Override

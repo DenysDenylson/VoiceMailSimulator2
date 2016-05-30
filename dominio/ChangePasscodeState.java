@@ -1,4 +1,3 @@
-
 public class ChangePasscodeState implements ConnectionState {
 
         @Override
