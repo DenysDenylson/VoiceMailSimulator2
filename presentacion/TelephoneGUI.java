@@ -129,6 +129,20 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 		JButton botonH = new JButton("H");
 		botonH.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				 c.hangup();
+			}
+		});
+		
+		JButton botonNumeral = new JButton("#");
+		botonNumeral.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				c.dial("#");
+			}
+		});
+		
+		JButton botonAceptar = new JButton("Aceptar");
+		botonAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				String mensaje = "";
 		        mensaje = txtMensaje.getText().toString();
 
@@ -144,13 +158,6 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 				}
 				
 				txtMensaje.setText("");
-			}
-		});
-		
-		JButton botonNumeral = new JButton("#");
-		botonNumeral.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				c.dial("#");
 			}
 		});
 		
@@ -191,7 +198,9 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 									.addGap(6)
 									.addComponent(botonCero)
 									.addGap(6)
-									.addComponent(botonNumeral)))
+									.addComponent(botonNumeral)
+									.addGap(6)
+									.addComponent(botonAceptar))) 
 							.addGap(136))
 						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 							.addComponent(txtMensaje, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
@@ -221,7 +230,8 @@ public class TelephoneGUI extends JFrame implements UserInterface{
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(botonH)
 						.addComponent(botonCero)
-						.addComponent(botonNumeral))
+						.addComponent(botonNumeral)
+						.addComponent(botonAceptar))
 					.addGap(23)
 					.addComponent(txtMensaje, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(98))
