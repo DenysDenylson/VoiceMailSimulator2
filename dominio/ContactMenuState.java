@@ -3,24 +3,26 @@ import java.util.List;
 
 public class ContactMenuState implements ConnectionState {
 	
-	public List<String> contactos;
+//	public List<String> contactos;
 	
 	public ContactMenuState() {
-		contactos = new ArrayList<String>();
-		contactos.add("denys 111");
-		contactos.add("denys 222");
-		contactos.add("denys 333");
+//		contactos = new ArrayList<String>();
+//		contactos.add("denys 111");
+//		contactos.add("denys 222");
+//		contactos.add("denys 333");
 	}
 
 		@Override
 	public void dial(String key, Connection c) {
 		if (key.equals("1")) {
 			String output = "";
-			output = getContacts();
+			output = c.getContacts();
 			output += Connection.CONTACT_MENU_TEXT;
 			c.speakToAllUIs(output);
 		} else if (key.equals("2")) {
-			System.out.println("Denus");
+			c.state = Connection.CREATED_CONTACT;
+			c.speakToAllUIs("Insertar contacto #");
+			
 		} else if (key.equals("3")) {
 			System.out.println("Denus");
 		} else if (key.equals("4")) {
@@ -36,12 +38,12 @@ public class ContactMenuState implements ConnectionState {
 		return null;
 	}
 	
-	public String getContacts(){
-		String listaDeContactos = "";
-		
-		for (String contacto : contactos)
-			listaDeContactos += contacto + "\n";
-		return listaDeContactos;
-	}
+//	public String getContacts(){
+//		String listaDeContactos = "";
+//		
+//		for (String contacto : contactos)
+//			listaDeContactos += contacto + "\n";
+//		return listaDeContactos;
+//	}
 
 }
