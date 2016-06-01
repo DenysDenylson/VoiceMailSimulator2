@@ -18,7 +18,7 @@ public class Conexion {
             } catch (ClassNotFoundException e) {
                 System.out.println("Error al cargar el Driver");
             }
-            con = DriverManager.getConnection("jdbc:sqlite:db_voiceMail.db");
+            con = DriverManager.getConnection("jdbc:sqlite://Users/leslicitamendez/Documents/Materias Cato/I-2016/Arquitectura de Software/Workspace/VoiceMailSimulator2/db_voiceMail.db");
         } catch (SQLException ex) {
             System.out.println("No se pudo conectar a la base de datos"+ex.toString());
         }        
@@ -28,7 +28,7 @@ public class Conexion {
         try {
             st = con.createStatement();
             st.executeQuery(sql);
-            //java.sql.ResultSet rs = st.executeQuery(sql);
+            //java.sql.ResultSet res = st.executeQuery(sql);
         } catch (SQLException e) {
             System.out.println("Error en el insertado:"+e.toString());
         }
