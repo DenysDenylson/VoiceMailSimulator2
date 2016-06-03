@@ -33,7 +33,7 @@ public class MailSystemTester
 //	   int id = 1;
 //	   String nombre = "denys-111";
 //	   Conexion con = new Conexion();
-//	   String sql = "INSERT INTO Contactos (id,nombres) " + "VALUES (1, 'Paul')";
+//	   String sql = "INSERT INTO Contactos (id,nombres) " + "VALUES (2, 'Paola')";
 //	   con.Insertar(sql);
    }
 }

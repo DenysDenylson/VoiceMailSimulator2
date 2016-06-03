@@ -30,7 +30,7 @@ public class Conexion {
             st.executeQuery(sql);
             //java.sql.ResultSet res = st.executeQuery(sql);
         } catch (SQLException e) {
-            System.out.println("Error en el insertado:"+e.toString());
+//            System.out.println("Error en el insertado:"+e.toString());
         }
     }
     

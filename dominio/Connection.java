@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,9 @@ public class Connection {
 	String currentRecording;
 	String accumulatedKeys;
 	
-	public List<String> contactos = new ArrayList<String>();
+	Conexion bd = new Conexion();
+	
+	public List<Contacto> agenda = new ArrayList<Contacto>();
 
 	private static final String INITIAL_PROMPT = "Enter mailbox number followed by #";
 	
@@ -43,11 +46,10 @@ public class Connection {
 	public Connection(MailSystem s) {
 		system = s;
 		
-		
-		contactos = new ArrayList<String>();
-		contactos.add("denys 111");
-		contactos.add("lesly 222");
-		contactos.add("oscar 333");
+		Contacto contacto1 = new Contacto("Pepe", "4");
+		Contacto contacto2 = new Contacto("Luis", "5");
+		agenda.add(contacto1);
+		agenda.add(contacto2);
 	}
 
 	public void addUI(UserInterface ui) {
@@ -113,13 +115,27 @@ public class Connection {
 	public String getContacts(){
 		String listaDeContactos = "";
 		
-		for (String contacto : contactos)
-			listaDeContactos += contacto + "\n";
-		return listaDeContactos;
+		javax.swing.DefaultListModel tem = new javax.swing.DefaultListModel();
+		
+		try {
+            java.sql.ResultSet hoja_resultados = null;
+            String sql = "select * from Contactos";
+            hoja_resultados = bd.Consulta(sql);
+            
+            while(hoja_resultados.next())
+                tem.addElement(hoja_resultados.getString("id")+"     "+hoja_resultados.getString("nombres"));
+        } catch (SQLException e) {
+            System.out.println("Error con el SQL");
+        }
+		Integer tamanho =  tem.size();
+		
+		for(Integer i=0; i<tamanho; i++)
+			listaDeContactos += tem.get(i) + "\n";
+        return listaDeContactos;		
 	}
 	
-	public boolean setContact(String contact){
-		contactos.add(contact);
+	public boolean setContact(Contacto contact){
+		agenda.add(contact);
 		return true;
 	}
 
